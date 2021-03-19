@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SPC5-Patch version="1.0.0">
+  <!--It is your patch repository, do not break your XML File.-->
+  <files>
+    <file componentId="com.st.spc5.components.lld.spc56elxx_rla" version="1.1.0.201903190945" path="component/lib/include/can_lld.h" user="false">
+      <diff><![CDATA[--- components/spc56elxx_low_level_drivers_component_rla/lib/include/can_lld.h
++++ components/spc56elxx_low_level_drivers_component_rla/lib/include/can_lld.h
+@@ -603,7 +603,7 @@
+  *                      callback
+  * @param[in] crfp      RX frame containg data
+  */
+-typedef void (*flexcancallback_t)(CANDriver *canp, CANRxFrame crfp);
++typedef void (*flexcancallback_t)(void);
+ 
+ /**
+  * @brief   FLEXCAN Error callback type.]]></diff>
+    </file>
+    <file componentId="com.st.spc5.components.lld.spc56elxx_rla" version="1.1.0.201903190945" path="component/lib/src/can_lld.c" user="false">
+      <diff><![CDATA[--- components/spc56elxx_low_level_drivers_component_rla/lib/src/can_lld.c
++++ components/spc56elxx_low_level_drivers_component_rla/lib/src/can_lld.c
+@@ -89,25 +89,25 @@
+   /* check if FIFO interrupt occurred */
+ 
+   if ((canp->config->use_fifo == TRUE) && ((iflag1 & 0x20UL) != 0UL)) {
+-    CANRxFrame crfp;
++    //CANRxFrame crfp;
+ 
+     /* read message */
+-    crfp.data32[0] = canp->flexcan->BUF[0].DATA.W[0];
+-    crfp.data32[1] = canp->flexcan->BUF[0].DATA.W[1];
+-    crfp.RTR = canp->flexcan->BUF[0].CS.B.RTR;
+-    crfp.IDE = canp->flexcan->BUF[0].CS.B.IDE;
+-    if (crfp.IDE != 0U) {
+-      crfp.EID = canp->flexcan->BUF[0].ID.R & 0x1FFFFFFFU;
+-    }
+-    else {
+-      crfp.SID = canp->flexcan->BUF[0].ID.B.STD_ID;
+-    }
+-    crfp.LENGTH = canp->flexcan->BUF[0].CS.B.LENGTH;
+-    crfp.TIME = canp->flexcan->BUF[0].CS.B.TIMESTAMP;
++    //crfp.data32[0] = canp->flexcan->BUF[0].DATA.W[0];
++    //crfp.data32[1] = canp->flexcan->BUF[0].DATA.W[1];
++    //crfp.RTR = canp->flexcan->BUF[0].CS.B.RTR;
++    //crfp.IDE = canp->flexcan->BUF[0].CS.B.IDE;
++    //if (crfp.IDE != 0U) {
++    //  crfp.EID = canp->flexcan->BUF[0].ID.R & 0x1FFFFFFFU;
++    //}
++    //else {
++    //  crfp.SID = canp->flexcan->BUF[0].ID.B.STD_ID;
++    //}
++    //crfp.LENGTH = canp->flexcan->BUF[0].CS.B.LENGTH;
++    //crfp.TIME = canp->flexcan->BUF[0].CS.B.TIMESTAMP;
+ 
+     /* callback */
+     if (canp->config->fifo_rx_callback != NULL) {
+-      canp->config->fifo_rx_callback(canp, crfp);
++      canp->config->fifo_rx_callback();
+     }
+ 
+     /* clear flag */
+@@ -492,29 +492,21 @@
+  *
+  * @isr
+  */
+-IRQ_HANDLER(SPC5_FLEXCAN0_BUF_08_11_HANDLER) {
++//IRQ_HANDLER(SPC5_FLEXCAN0_BUF_08_11_HANDLER) {
++//
++//  IRQ_PROLOGUE();
++//
++//  can_lld_handler(&CAND1);
++//
++//  IRQ_EPILOGUE();
++//}
+ 
+-  IRQ_PROLOGUE();
+-
+-  can_lld_handler(&CAND1);
+-
+-  IRQ_EPILOGUE();
+-}
+-
+ /**
+  * @brief   CAN1 TX interrupt handler for MB 12-15.
+  *
+  * @isr
+  */
+-IRQ_HANDLER(SPC5_FLEXCAN0_BUF_12_15_HANDLER) {
+ 
+-  IRQ_PROLOGUE();
+-
+-  can_lld_handler(&CAND1);
+-
+-  IRQ_EPILOGUE();
+-}
+-
+ /**
+  * @brief   CAN1 TX interrupt handler for MB 16-31.
+  *]]></diff>
+    </file>
+  </files>
+</SPC5-Patch>

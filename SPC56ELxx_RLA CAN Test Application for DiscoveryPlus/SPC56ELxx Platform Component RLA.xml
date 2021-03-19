@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SPC5-Component-Instance version="1.1.0">
+  <instance locked="false" id="com.st.spc5.components.platform.spc56elxx_rla">
+    <platform_settings>
+      <choose_mcu index="8">
+        <value>SPC56EL60L3 dual_e200z4 1M 128KRAM LQFP100</value>
+      </choose_mcu>
+      <specific_model index="8">
+        <value>SPC56EL60L3</value>
+      </specific_model>
+      <device_list disabled="true">
+        <value>NONE,LINFlex0,LINFlex1</value>
+      </device_list>
+      <can_list disabled="true">
+        <value>NONE,FlexCan0,FlexCan1,FlexCan2</value>
+      </can_list>
+    </platform_settings>
+    <runtime_settings>
+      <core_0_process_stack_size>
+        <value>2048</value>
+      </core_0_process_stack_size>
+      <core_0_irq_stack_size>
+        <value>0</value>
+      </core_0_irq_stack_size>
+      <dual_core_mode index="0">
+        <value>Lock Step Mode</value>
+      </dual_core_mode>
+      <core_1_process_stack_size disabled="true">
+        <value>2048</value>
+      </core_1_process_stack_size>
+      <core_1_irq_stack_size disabled="true">
+        <value>0</value>
+      </core_1_irq_stack_size>
+      <boot_mode index="0">
+        <value>Execute from Flash</value>
+      </boot_mode>
+      <load_address index="0">
+        <value>0x00000000</value>
+      </load_address>
+    </runtime_settings>
+    <build_settings>
+      <application_name>
+        <value>out</value>
+      </application_name>
+      <compiler_variant>
+        <value>FreeGCC with VLE support</value>
+      </compiler_variant>
+      <optimization_level index="3">
+        <value>-O2 speed</value>
+      </optimization_level>
+      <common_options>
+        <value>-gdwarf-2 -fomit-frame-pointer -falign-functions=16 -fno-gcse</value>
+      </common_options>
+      <c_options>
+        <value />
+      </c_options>
+      <cpp_options>
+        <value>-fno-rtti -fno-exceptions</value>
+      </cpp_options>
+      <use_vle disabled="true" index="0">
+        <value>yes</value>
+      </use_vle>
+      <use_verbose_compile index="1">
+        <value>no</value>
+      </use_verbose_compile>
+      <create_static_library>
+        <value>false</value>
+      </create_static_library>
+    </build_settings>
+    <linker_settings>
+      <use_linker_gc index="0">
+        <value>yes</value>
+      </use_linker_gc>
+      <linker_options>
+        <value>-lm -lc</value>
+      </linker_options>
+      <entry_point>
+        <value>_reset_address</value>
+      </entry_point>
+      <custom_sections>
+        <value />
+      </custom_sections>
+    </linker_settings>
+  </instance>
+</SPC5-Component-Instance>

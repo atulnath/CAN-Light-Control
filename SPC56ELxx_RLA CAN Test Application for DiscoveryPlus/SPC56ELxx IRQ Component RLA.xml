@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SPC5-Component-Instance version="1.1.0">
+  <instance locked="false" id="com.st.spc5.components.irq.spc56elxx_rla">
+    <isrs>
+      <enabled_vectors>
+        <vector>
+          <identifier>
+            <value>Pit_Channel_1</value>
+          </identifier>
+          <number>
+            <value>60</value>
+          </number>
+          <priority index="7">
+            <value>8</value>
+          </priority>
+          <name_override>
+            <value>Pit_Channel_1</value>
+          </name_override>
+          <isr_code>
+            <value><![CDATA[/*
+ * ${isr_identifier} ISR function (vector ${isr_vector}).
+ */
+IRQ_HANDLER(${isr_name}) {
+
+  IRQ_PROLOGUE();
+
+  /* ISR code here.*/
+
+  IRQ_EPILOGUE();
+}]]></value>
+          </isr_code>
+        </vector>
+        <vector>
+          <identifier>
+            <value>Pit_Channel_2</value>
+          </identifier>
+          <number>
+            <value>61</value>
+          </number>
+          <priority index="11">
+            <value>12</value>
+          </priority>
+          <name_override>
+            <value>Pit_Channel_2</value>
+          </name_override>
+          <isr_code>
+            <value><![CDATA[/*
+ * ${isr_identifier} ISR function (vector ${isr_vector}).
+ */
+IRQ_HANDLER(${isr_name}) {
+
+  IRQ_PROLOGUE();
+
+  /* ISR code here.*/
+
+  IRQ_EPILOGUE();
+}]]></value>
+          </isr_code>
+        </vector>
+        <vector>
+          <identifier>
+            <value>Pit_Channel_3</value>
+          </identifier>
+          <number>
+            <value>127</value>
+          </number>
+          <priority index="11">
+            <value>12</value>
+          </priority>
+          <name_override>
+            <value>Pit_Channel_3</value>
+          </name_override>
+          <isr_code>
+            <value><![CDATA[/*
+ * ${isr_identifier} ISR function (vector ${isr_vector}).
+ */
+IRQ_HANDLER(${isr_name}) {
+
+  IRQ_PROLOGUE();
+
+  /* ISR code here.*/
+
+  IRQ_EPILOGUE();
+}]]></value>
+          </isr_code>
+        </vector>
+      </enabled_vectors>
+      <headers>
+        <value />
+      </headers>
+    </isrs>
+    <external_irqs>
+      <enabled_eirq />
+      <eirq_0_7_priority index="7">
+        <value>8</value>
+      </eirq_0_7_priority>
+      <eirq_8_15_priority index="7">
+        <value>8</value>
+      </eirq_8_15_priority>
+      <eirq_16_23_priority index="7">
+        <value>8</value>
+      </eirq_16_23_priority>
+      <eirq_24_31_priority index="7">
+        <value>8</value>
+      </eirq_24_31_priority>
+    </external_irqs>
+  </instance>
+</SPC5-Component-Instance>
